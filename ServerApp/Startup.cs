@@ -8,6 +8,10 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.AspNetCore.SpaServices.AngularCli;
+using ServerApp.Models;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 
 namespace ServerApp
 {
@@ -23,11 +27,19 @@ namespace ServerApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            string connectionString = Configuration["ConnectionStrings:DefaultConnection"];
+            services.AddDbContext<DataContext>(options =>
+            options.UseSqlServer(connectionString));
             services.AddControllersWithViews();
+            services.AddRazorPages();
+            services.AddSwaggerGen(options => {
+                options.SwaggerDoc("v1",
+                new OpenApiInfo { Title = "SportsStore API", Version = "v1" });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IServiceProvider services)
         {
             if (env.IsDevelopment())
             {
@@ -52,6 +64,29 @@ namespace ServerApp
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+                c.RoutePrefix = string.Empty;
+            });
+
+            app.UseSpa(spa =>
+            {
+                string strategy = Configuration
+                    .GetValue<string>("DevTools:ConnectionStrategy");
+                if (strategy == "proxy")
+                {
+                    spa.UseProxyToSpaDevelopmentServer("http://127.0.0.1:4200");
+                }
+                else if (strategy == "managed")
+                {
+                    spa.Options.SourcePath = "../ClientApp";
+                    spa.UseAngularCliServer("start");
+                }
+            });
+            SeedData.SeedDatabase(services.GetRequiredService<DataContext>());
         }
     }
 }

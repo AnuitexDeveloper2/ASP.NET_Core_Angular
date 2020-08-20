@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Anuitex-179\\source\\repos\\SportStore\\ServerApp\\ServerApp.csproj": {}
+    "C:\\Users\\Anuitex-179\\source\\repos\\New folder (2)\\ASP.NET_Core_Angular\\ServerApp\\ServerApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Anuitex-179\\source\\repos\\SportStore\\ServerApp\\ServerApp.csproj": {
+    "C:\\Users\\Anuitex-179\\source\\repos\\New folder (2)\\ASP.NET_Core_Angular\\ServerApp\\ServerApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Anuitex-179\\source\\repos\\SportStore\\ServerApp\\ServerApp.csproj",
+        "projectUniqueName": "C:\\Users\\Anuitex-179\\source\\repos\\New folder (2)\\ASP.NET_Core_Angular\\ServerApp\\ServerApp.csproj",
         "projectName": "ServerApp",
-        "projectPath": "C:\\Users\\Anuitex-179\\source\\repos\\SportStore\\ServerApp\\ServerApp.csproj",
+        "projectPath": "C:\\Users\\Anuitex-179\\source\\repos\\New folder (2)\\ASP.NET_Core_Angular\\ServerApp\\ServerApp.csproj",
         "packagesPath": "C:\\Users\\Anuitex-179\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Anuitex-179\\source\\repos\\SportStore\\ServerApp\\obj\\",
+        "outputPath": "C:\\Users\\Anuitex-179\\source\\repos\\New folder (2)\\ASP.NET_Core_Angular\\ServerApp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
@@ -41,6 +41,40 @@
       },
       "frameworks": {
         "netcoreapp3.0": {
+          "dependencies": {
+            "Microsoft.AspNetCore.SpaServices.Extensions": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[3.1.7, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.0.0, )"
+            },
+            "Microsoft.Extensions.Logging.Debug": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
